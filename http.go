@@ -10,6 +10,7 @@ import (
 
 func startHttp(store *store.Store) {
 	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		queryVals := req.URL.Query()
 
 		from, _ := strconv.ParseUint(queryVals.Get("from"), 10, 64)
